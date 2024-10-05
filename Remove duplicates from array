@@ -1,0 +1,7 @@
+def  rem_duplicates(x):
+    return(list(set(x)))
+
+user_input = input("Enter the variables [with spaces]: ")
+array = user_input.split()
+final_array = rem_duplicates(array)
+print("Final array after removing the duplicates: ",final_array)
