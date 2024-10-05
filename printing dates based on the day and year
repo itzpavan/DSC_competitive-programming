@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+const char* get_month_name(int month) {
+    const char* months[] = {
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    };
+    return months[month - 1];
+}
+
+int is_leap_year(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+void print_date(int day, int year) {
+    int month = 1;
+    int days_in_month;
+
+    for (month = 1; month <= 12; month++) {
+        if (month == 2) {
+            days_in_month = is_leap_year(year) ? 29 : 28;
+        } else if (month == 4 || month == 6 || month == 9 || month == 11) {
+            days_in_month = 30;
+        } else {
+            days_in_month = 31;
+        }
+
+        if (day <= days_in_month) {
+            printf("Date: %d %s %d\n", day, get_month_name(month), year);
+            return;
+        }
+        day -= days_in_month;
+    }
+    printf("Invalid day number for the year %d\n", year);
+}
+
+int main() {
+    int day, year;
+    printf("Enter day number: ");
+    scanf("%d", &day);
+    printf("Enter year: ");
+    scanf("%d", &year);
+    print_date(day, year);
+    return 0;
+}
