@@ -1,0 +1,12 @@
+# Arrange words in a string in the order of their length.
+def length_arrangement(x):
+    words = x.split()
+
+    length_sort = sorted(words, key=len)
+    ding = " ".join(length_sort)
+    return ding
+
+user_input = input("Enter a sentence: ")
+string_arranged = length_arrangement(user_input)
+print(string_arranged)
+
